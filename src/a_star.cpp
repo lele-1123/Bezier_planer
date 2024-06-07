@@ -183,7 +183,7 @@ vector<GridNodePtr> gridPathFinder::getVisitedNodes()
                     visited_nodes.push_back(GridNodeMap[i][j][k]);
             }
 
-    ROS_WARN("visited_nodes size : %d", visited_nodes.size());
+    ROS_WARN("visited_nodes size : %zu", visited_nodes.size());
     return visited_nodes;
 }
 

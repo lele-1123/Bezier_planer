@@ -683,7 +683,7 @@ Cube generateCube( Vector3d pt)
     Vector3d pc_coord = collision_map->GridIndexToLocation(pc_index);
 
     cube.center = pc_coord;
-    double x_u = pc_coord(0);
+    double x_u = pc_coord(0);  // u:up, l:low
     double x_l = pc_coord(0);
     
     double y_u = pc_coord(1);
@@ -1203,10 +1203,10 @@ int main(int argc, char** argv)
     nh.param("planning/stop_horizon",  _stop_horizon,  5.0);
     nh.param("planning/is_limit_vel",  _is_limit_vel,  false);
     nh.param("planning/is_limit_acc",  _is_limit_acc,  false);
-    nh.param("planning/is_use_fm",     _is_use_fm,  true);
+    nh.param("planning/is_use_fm",     _is_use_fm,  true);     // true使用的是FM，false使用的是A*
 
-    nh.param("optimization/min_order",  _minimize_order, 3.0);
-    nh.param("optimization/poly_order", _traj_order,    10);
+    nh.param("optimization/min_order",  _minimize_order, 3.0); // minimize jerk 所以 k = 3
+    nh.param("optimization/poly_order", _traj_order,    10);   // bezier 曲线的次数 n 为 10
 
     nh.param("vis/vis_traj_width", _vis_traj_width, 0.15);
     nh.param("vis/is_proj_cube",   _is_proj_cube, true);

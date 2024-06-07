@@ -77,8 +77,7 @@ class EikonalSolver : public Solver<grid_t>{
     protected:
         /** \brief Solves the Eikonal equation assuming that Tvalues_
             is sorted. */
-        double solveEikonalNDims
-        (unsigned int idx, unsigned int dim) {
+        double solveEikonalNDims(unsigned int idx, unsigned int dim) {
             // Solve for 1 dimension.
             if (dim == 1)
                 return Tvalues_[0] + grid_->getLeafSize() / grid_->getCell(idx).getVelocity();

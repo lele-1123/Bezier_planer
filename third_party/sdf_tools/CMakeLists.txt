@@ -27,7 +27,7 @@ catkin_package(
 
 include_directories(include SYSTEM ${catkin_INCLUDE_DIRS} ${Eigen3_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -flto -O3 -Wall -Wextra -Werror")
+set(CMAKE_CXX_FLAGS "-std=c++14 ${CMAKE_CXX_FLAGS} -flto -O3 -Wall -Wextra -Werror")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 # SDF library

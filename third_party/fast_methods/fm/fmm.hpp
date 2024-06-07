@@ -75,8 +75,8 @@ template < class grid_t, class heap_t = FMDaryHeap<FMCell> >  class FMM : public
         virtual ~FMM() { clear(); }
 
         /** \brief Executes EikonalSolver setup and sets maximum size for the narrow band. */
-        virtual int setup
-        () {
+        virtual int setup()
+        {
             int ret = EikonalSolver<grid_t>::setup();
             narrow_band_.setMaxSize(grid_->size());
             setHeuristics(heurStrategy_); // Redundant, but safe.

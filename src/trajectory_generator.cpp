@@ -81,7 +81,8 @@ int TrajectoryGenerator::BezierPloyCoeffGeneration(
     }
 
     //ROS_WARN("[Bezier Trajectory] equality bound %d", equ_con_num);
-    for(int i = 0; i < equ_con_num; i ++ ){ 
+    for(int i = 0; i < equ_con_num; i ++ )
+    { 
         double beq_i;
         if(i < 3)                    beq_i = pos(0, i); 
         else if (i >= 3  && i < 6  ) beq_i = vel(0, i - 3); 
@@ -149,9 +150,9 @@ int TrajectoryGenerator::BezierPloyCoeffGeneration(
     //MSK_putdouparam (task, MSK_DPAR_INTPNT_TOL_REL_GAP, 5e-2 );
 //######################################################################
     
-    //r = MSK_linkfunctotaskstream(task,MSK_STREAM_LOG,NULL,printstr); 
+    // r = MSK_linkfunctotaskstream(task,MSK_STREAM_LOG,NULL,printstr); 
     // Append empty constraints. 
-     //The constraints will initially have no bounds. 
+    // The constraints will initially have no bounds. 
     if ( r == MSK_RES_OK ) 
       r = MSK_appendcons(task,con_num);  
 
@@ -159,7 +160,7 @@ int TrajectoryGenerator::BezierPloyCoeffGeneration(
     if ( r == MSK_RES_OK ) 
       r = MSK_appendvars(task,ctrlP_num); 
 
-    //ROS_WARN("set variables boundary");
+    // ROS_WARN("set variables boundary");
     for(j = 0; j<ctrlP_num && r == MSK_RES_OK; ++j){ 
         if (r == MSK_RES_OK) 
             r = MSK_putvarbound(task, 
