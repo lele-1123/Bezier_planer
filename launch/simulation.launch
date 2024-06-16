@@ -8,7 +8,7 @@
 <arg name="init_y" default="-20.0"/>
 <arg name="init_z" default="  0.5"/>
 
-  <node pkg="bezier_planer" type="b_traj_node" name="b_traj_node" output="screen">
+  <node pkg="bezier_planner" type="b_traj_node" name="b_traj_node" output="screen">
       <remap from="~waypoints"      to="/waypoint_generator/waypoints"/>
       <remap from="~odometry"       to="/odom/fake_odom"/>
       <remap from="~map"            to="/random_forest_sensing/random_forest"/> 
@@ -41,7 +41,7 @@
       <param name="vis/is_proj_cube"   value="false"/>
   </node>
   
-  <node pkg  = "bezier_planer" type = "odom_generator" output = "screen" name = "odom_generator">    
+  <node pkg  = "bezier_planner" type = "odom_generator" output = "screen" name = "odom_generator">    
       <remap from = "~odometry"  to = "odom/fake_odom"/>
       <remap from = "~command"   to = "/position_cmd"/>
       <param name="init_x"  value="$(arg init_x)"/>
@@ -49,7 +49,7 @@
       <param name="init_z"  value="$(arg init_z)"/>
   </node>
 
-  <node pkg  = "bezier_planer" type = "b_traj_server" output = "screen" name = "b_traj_server">    
+  <node pkg  = "bezier_planner" type = "b_traj_server" output = "screen" name = "b_traj_server">    
       <remap from = "~trajectory"        to = "b_traj_node/trajectory"/>
       <remap from = "~odometry"          to = "/odom/fake_odom"/>
       <remap from = "~position_command"  to = "/position_cmd"/>
@@ -63,7 +63,7 @@
       <param name="waypoint_type" value="manual-lonely-waypoint"/>    
   </node>
 
-  <node pkg ="bezier_planer" name ="random_forest_sensing" type ="random_forest_sensing" output = "screen">    
+  <node pkg ="bezier_planner" name ="random_forest_sensing" type ="random_forest_sensing" output = "screen">    
       <remap from="~odometry"   to="/odom/fake_odom"/>    
       <param name="init_state_x"   value="$(arg init_x)"/>
       <param name="init_state_y"   value="$(arg init_y)"/>
@@ -90,6 +90,6 @@
       <param name="robot_scale" value="1.0"/>   
   </node>
 
-  <node name="rvizvisualisation" pkg="rviz" type="rviz" output="log" args="-d $(find bezier_planer)/launch/rviz_config/simulation.rviz" />
+  <node name="rvizvisualisation" pkg="rviz" type="rviz" output="log" args="-d $(find bezier_planner)/launch/rviz_config/simulation.rviz" />
 
 </launch>

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(bezier_planer)
+project(bezier_planner)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/sdf_tools)
 
